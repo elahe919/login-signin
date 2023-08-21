@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
+import { validate } from './validate';
 
 const Signup = () => {
 
@@ -17,6 +18,11 @@ const Signup = () => {
             setData({ ...data, [event.target.name]: event.target.value })
         }
     }
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        setErrors(validate(data))
+    }, [data])
 
     return (
         <div>
